@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Blog</title>
+
+<style>
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+#search-bar {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+}
+
+/* Blog */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.blog-post {
+    background: var(--white);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: var(--border-radius);
+}
+
+.post-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+/* Comments */
+.comments-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fcfcfc;
+}
+
+.comment {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    padding: 10px;
+}
+
+.comment-form button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>DevInsights Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#post-1">Web Dev</a></li>
+                <li><a href="#post-2">CSS</a></li>
+                <li><a href="#post-3">JS</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </div>
+</header>
+
+<main>
+
+<!-- Post 1 -->
+<article id="post-1" class="blog-post">
+    <h2>Future of Web Development</h2>
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="post-image">
+    <p>Web development is evolving with AI, WebAssembly, and more.</p>
+
+    <section class="comments-section">
+        <div id="comments-list-1"></div>
+        <form class="comment-form" data-target="comments-list-1">
+            <input type="text" name="userName" placeholder="Your Name" required>
+            <textarea name="userMessage" placeholder="Comment..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </section>
+</article>
+
+<!-- Post 2 -->
+<article id="post-2" class="blog-post">
+    <h2>CSS Grid & Flexbox</h2>
+    <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2" class="post-image">
+    <p>Modern layouts made easy with Grid and Flexbox.</p>
+
+    <section class="comments-section">
+        <div id="comments-list-2"></div>
+        <form class="comment-form" data-target="comments-list-2">
+            <input type="text" name="userName" required>
+            <textarea name="userMessage" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </section>
+</article>
+
+<!-- Post 3 -->
+<article id="post-3" class="blog-post">
+    <h2>JS Frameworks</h2>
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" class="post-image">
+    <p>React, Vue, or Angular? Choose wisely.</p>
+
+    <section class="comments-section">
+        <div id="comments-list-3"></div>
+        <form class="comment-form" data-target="comments-list-3">
+            <input type="text" name="userName" required>
+            <textarea name="userMessage" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </section>
+</article>
+
+</main>
+
+<footer>
+    <p>© 2024 DevInsights Blog</p>
+</footer>
+
+<script>
+// COMMENTS
+document.querySelectorAll('.comment-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const list = document.getElementById(this.dataset.target);
+        const name = this.userName.value.trim();
+        const msg = this.userMessage.value.trim();
+
+        if (name && msg) {
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.innerHTML = `<h4>${name}</h4><p>${msg}</p>`;
+            list.appendChild(div);
+            this.reset();
+        }
+    });
+});
+
+// SEARCH
+document.getElementById('search-bar').addEventListener('input', function() {
+    const value = this.value.toLowerCase();
+    document.querySelectorAll('.blog-post').forEach(post => {
+        post.style.display = post.innerText.toLowerCase().includes(value)
+            ? 'block' : 'none';
+    });
+});
+</script>
+
+</body>
+</html>
