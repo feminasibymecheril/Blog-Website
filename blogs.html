@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Mentor Blog Project</title>
+    
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+
+        #nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        #nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        #nav-links li a:hover {
+            color: #00d4ff;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 0 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            margin-bottom: 4rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .post-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-content {
+            padding: 2.5rem;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            margin: 0.5rem 0 1.2rem;
+            font-size: 2rem;
+            color: #1a1a1a;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Comment Section */
+        .comment-section {
+            margin-top: 2rem;
+            border-top: 2px solid #f0f2f5;
+            padding-top: 2rem;
+        }
+
+        .comment-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .comment {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 5px solid #00d4ff;
+        }
+
+        .comment strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+
+        /* Forms */
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .comment-form button {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .comment-form button:hover {
+            background: #00d4ff;
+            color: #1a1a1a;
+        }
+
+        /* Responsive Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: #1a1a1a;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            #nav-links {
+                margin-top: 1rem;
+            }
+            #nav-links li {
+                margin: 5px 10px;
+            }
+            .post-img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">TECH_LOG</div>
+            <ul id="nav-links">
+                <li><a href="#post-1">Development</a></li>
+                <li><a href="#post-2">Gadgets</a></li>
+                <li><a href="#post-3">Future Tech</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <article class="blog-post" id="post-1">
+            <img src="https://picsum.photos/id/1/800/400" alt="Coding" class="post-img">
+            <div class="post-content">
+                <span class="date">Published: March 10, 2026</span>
+                <h2>Understanding Semantic HTML5</h2>
+                <p>Semantic HTML introduces meaning to the web page rather than just presentation. For example, using a &lt;header&gt; tag tells the browser and search engines exactly what that section is for, which helps with SEO and accessibility.</p>
+                
+                <div class="comment-section">
+                    <h3>Discussion</h3>
+                    <div class="comment-list" id="list-1"></div>
+                    <form class="comment-form" onsubmit="handleComment(event, 'list-1')">
+                        <input type="text" placeholder="Your Name" required>
+                        <textarea placeholder="Write a comment..." rows="3" required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+        <article class="blog-post" id="post-2">
+            <img src="https://picsum.photos/id/119/800/400" alt="Gadgets" class="post-img">
+            <div class="post-content">
+                <span class="date">Published: March 15, 2026</span>
+                <h2>Why CSS Grid is a Game Changer</h2>
+                <p>Grid layout is the most powerful layout system available in CSS. It is a 2-dimensional system, meaning it can handle both columns and rows, unlike Flexbox which is largely 1-dimensional. It makes complex layouts a breeze to build.</p>
+                
+                <div class="comment-section">
+                    <h3>Discussion</h3>
+                    <div class="comment-list" id="list-2"></div>
+                    <form class="comment-form" onsubmit="handleComment(event, 'list-2')">
+                        <input type="text" placeholder="Your Name" required>
+                        <textarea placeholder="Write a comment..." rows="3" required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+        <article class="blog-post" id="post-3">
+            <img src="https://picsum.photos/id/160/800/400" alt="Future" class="post-img">
+            <div class="post-content">
+                <span class="date">Published: March 22, 2026</span>
+                <h2>The Importance of Web Accessibility</h2>
+                <p>Web accessibility (A11y) ensures that people with disabilities can use the web. By writing clean code and using proper ARIA roles, we build a more inclusive digital world for everyone regardless of their hardware or abilities.</p>
+                
+                <div class="comment-section">
+                    <h3>Discussion</h3>
+                    <div class="comment-list" id="list-3"></div>
+                    <form class="comment-form" onsubmit="handleComment(event, 'list-3')">
+                        <input type="text" placeholder="Your Name" required>
+                        <textarea placeholder="Write a comment..." rows="3" required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Blog Website Project | Built for Unified Mentor</p>
+    </footer>
+
+    <script>
+        /**
+         * Function to capture and display comments
+         */
+        function handleComment(event, listId) {
+            // Prevent form from refreshing the page
+            event.preventDefault();
+
+            // Target the specific form and its inputs
+            const form = event.target;
+            const nameField = form.querySelector('input');
+            const messageField = form.querySelector('textarea');
+            const targetList = document.getElementById(listId);
+
+            // Create comment elements
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            
+            // Set the content
+            newComment.innerHTML = `
+                <strong>${nameField.value}</strong>
+                <p>${messageField.value}</p>
+            `;
+
+            // Add to the list
+            targetList.appendChild(newComment);
+
+            // Reset the form fields
+            nameField.value = '';
+            messageField.value = '';
+        }
+
+        // Add smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
